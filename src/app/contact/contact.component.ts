@@ -30,9 +30,5 @@ export class ContactComponent implements OnInit {
   remove() {
     this.contactDeleted.emit();
   }
-  
-
-
- 
 
 }

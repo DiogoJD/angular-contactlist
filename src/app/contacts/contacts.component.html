@@ -11,22 +11,9 @@
 
         <div class="card-body"> 
 
-          <!-- LISTAGEM DE CONTATOS -->
-          <div *ngFor="let contact of contacts">
-            <!-- COMPONENT CONTACT -->
-            <app-contact
-              [contact]="contact"
-              (contactDeleted)="delete(contact)">
-            </app-contact>
-          </div>
-
-          <!-- ENQUANTO 'loading' FOR TRUE, A MENSAGEM É MOSTRADA -->
-          <div *ngIf="loading" class="text-center">
-              <i class="fa fa-spinner fa-pulse fa-2x fa-fw">Carregando...</i>
-          </div>
 
           <ul class="list-group">
-              <li *ngFor="let contact of contacts">
+              <li *ngFor="let contact of contacts" class="list-group-item list-group-item-success">
               <!-- COMPONENT CONTACT -->
                 <app-contact
                    [contact]="contact"
