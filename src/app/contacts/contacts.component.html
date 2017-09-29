@@ -28,8 +28,9 @@
 
   
 
-  <!-- CREATE TASK FORM -->
+  <!-- CREATE CONTACT FORM -->
   <div *ngIf="showCreate" class="col-md-4 mb-2">
+    <div class="containerAdd">
       <div class="card">
         <div class="card-header">
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -45,12 +46,12 @@
             
             <div class="input-group">
 
-              <label>Nome:</label>
+              <label>Nome:&nbsp;&nbsp;</label>
               <input type="text" class="form-control" [(ngModel)]="inputName" />
 
-              
+              &nbsp;&nbsp;&nbsp;
 
-              <label>Fone:</label>
+              <label>Fone:&nbsp;&nbsp;</label>
               <input type="text" class="form-control" [(ngModel)]="inputPhone" />
 
 
@@ -62,6 +63,6 @@
           </div>
         </div>
       </div>
-    </div>
-
+    </div><!-- container -->
+  </div>
 </div>
