@@ -1,7 +1,19 @@
-<h1>{{title}}</h1>
 
-<br /><br />
-
-<!-- LINKS PARA ROTEAMENTO ENTRE OS COMPONENTES -->
-<button routerLink="/">Contacts</button>
-<button routerLink="/about">About</button>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+    <a class="navbar-brand" routerLink="/"><h1>{{title}}</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-sm-0">
+        <li class="nav-item" routerLinkActive="active">
+            <button routerLink="/">Contacts</button>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <button routerLink="/about">Sobre</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

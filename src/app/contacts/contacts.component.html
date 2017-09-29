@@ -1,26 +1,80 @@
-<!-- LISTAGEM DE CONTATOS -->
-<div *ngFor="let contact of contacts">
-  <!-- COMPONENT CONTACT -->
-  <app-contact
-    [contact]="contact"
-    (contactDeleted)="delete(contact)">
-  </app-contact>
+<div class="row">
+
+  <div class="col-md mb-2">
+      <div class="card">
+
+        <div class="card-header">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+            Contatos
+            <button class="btn btn-sm btn-outline-secondary float-right" (click)="showNewContactForm()">Adicionar</button>
+        </div>
+
+        <div class="card-body"> 
+
+          <!-- LISTAGEM DE CONTATOS -->
+          <div *ngFor="let contact of contacts">
+            <!-- COMPONENT CONTACT -->
+            <app-contact
+              [contact]="contact"
+              (contactDeleted)="delete(contact)">
+            </app-contact>
+          </div>
+
+          <!-- ENQUANTO 'loading' FOR TRUE, A MENSAGEM É MOSTRADA -->
+          <div *ngIf="loading" class="text-center">
+              <i class="fa fa-spinner fa-pulse fa-2x fa-fw">Carregando...</i>
+          </div>
+
+          <ul class="list-group">
+              <li *ngFor="let contact of contacts">
+              <!-- COMPONENT CONTACT -->
+                <app-contact
+                   [contact]="contact"
+                   (contactDeleted)="delete(contact)">
+                </app-contact>
+              </li>
+          </ul>
+
+      </div>    
+    </div> 
+  </div>
+
+  
+
+  <!-- CREATE TASK FORM -->
+  <div *ngIf="showCreate" class="col-md-4 mb-2">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          Novo
+          <button
+            (click)="showNewContactForm()"
+            class="btn btn-sm btn-outline-secondary float-right">
+            Cancelar
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            
+            <div class="input-group">
+
+              <label>Nome:</label>
+              <input type="text" class="form-control" [(ngModel)]="inputName" />
+
+              
+
+              <label>Fone:</label>
+              <input type="text" class="form-control" [(ngModel)]="inputPhone" />
+
+
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" (click)="insertContact()">Inserir</button>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
-
-<!-- ENQUANTO 'loading' FOR TRUE, A MENSAGEM É MOSTRADA -->
-<div *ngIf="loading">
-  Carregando...
-</div>
-
-<br /><br />
-
-<!--  FORMULÁRIO PARA INSERÇÃO DE CONTATOS -->
-Name:
-<input
-  type="text"
-  [(ngModel)]="inputName" /> <br />
-Phone:
-<input
-  type="text"
-  [(ngModel)]="inputPhone" /> <br />
-<button (click)="insertContact()">Inserir</button>

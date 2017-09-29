@@ -1,6 +1,19 @@
-<strong>Name:</strong> {{contact.name}} 
-<br />
-<strong>Phone:</strong> {{contact.phone}}
-<br />
-<button (click)="remove()">Remove</button>
-<br /><br />
+
+
+
+<div>
+        
+        
+
+        <strong>Name: </strong> {{contact.name}} 
+        <br />
+        <strong>Phone:</strong> {{contact.phone}}
+        <br />
+        <a class="icon float-right" (click)="remove()" data-toggle="tooltip" title="Remover">
+          <i class="gray-icon fa fa-times" aria-hidden="true"></i>
+        </a>
+       
+
+</div>
+
+      

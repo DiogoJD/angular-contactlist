@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 //Importando a descrição do objecto Contact
 import { Contact } from './contact.model';
 
@@ -13,13 +15,17 @@ import { ContactsService } from './contacts.service';
 })
 export class ContactsComponent implements OnInit {
 
-  
+  constructor(private contactsService:ContactsService) { }
    //Propriedade para controlar o estado de loading da aplicação
    loading = false;
     
    //Lista de contatos
    contacts:Contact[];
-   
+
+ 
+   showCreate = false;
+
+
    //Two way binding dos campos de texto
    inputName = "";
    inputPhone = "";
@@ -27,7 +33,7 @@ export class ContactsComponent implements OnInit {
    //No construtor é feito a instanciação do Serviço de contatos através de
    //injeção de dependencia. Após isso o 'this.contactsService' fica disponível
    //no componente
-   constructor(private contactsService:ContactsService) { }
+
 
   ngOnInit() {
     //Antes de iniciar o procedimento, setamos a flag loading para true
@@ -44,6 +50,8 @@ export class ContactsComponent implements OnInit {
       });
   }
 
+
+
   //DELETAR CONTATO
   delete(contact) {
     //Chamamos o método deleteContact do serviço, dando subscribe
@@ -56,6 +64,7 @@ export class ContactsComponent implements OnInit {
 
   //INSERIR CONTATO
   insertContact() {
+    this.showCreate = false;
     //Carregamos os dados de inputName e inputPhone para construir nosso objeto Contact
     let contact:Contact = {
       name: this.inputName,
@@ -68,14 +77,12 @@ export class ContactsComponent implements OnInit {
       //para ser mostrado
       this.contacts.push(c);
     });
-    //Limpar campos do formulário
-    this.clearForm();
+
   }
 
-  // LIMPA OS CAMPOS DO FORMULÁRIO APÓS INSERÇÃO
-  clearForm() {
-    this.inputName = "";
-    this.inputPhone = "";
-  }
   
+  showNewContactForm() {
+    this.showCreate = !this.showCreate;
+  }
+
 }

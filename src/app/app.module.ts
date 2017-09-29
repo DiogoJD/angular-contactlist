@@ -4,10 +4,11 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
+
 
 //meus componentes
+import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';

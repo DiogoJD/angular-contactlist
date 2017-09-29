@@ -1,0 +1,22 @@
+.floating-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 55px;
+    z-index: 1000;
+    text-align: center;
+  }
+  
+  .bg-pending {
+    background-color: #FDFDFD;
+  }
+  
+  .bg-completed {
+    background-color: #ccf4c3;
+  }
+  
+  .bg-ongoing {
+    background-color: #f4f4c3;
+  }
+  

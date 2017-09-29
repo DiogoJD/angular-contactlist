@@ -6,5 +6,11 @@ export class Contact {
     _id?:string;
     name:string;
     phone:string;
+
+    constructor(name, phone="123123") {
+      this.name = name;
+      this.phone = phone;
+    }
+
   }
   
