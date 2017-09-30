@@ -2,7 +2,12 @@
     cursor: pointer;
   }
   
-  .gray-icon {
+  .red-icon {
+    font-size:20px;
     color: red;
   }
-  
+
+  .blue-icon {
+    font-size:15px;
+    color: blue;
+  }

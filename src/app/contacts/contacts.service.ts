@@ -50,6 +50,16 @@ export class ContactsService {
       .map(res => res.json());
   }
 
-
+  //PUT Editar
+  editContact(contact){
+    //Como nossa API recebe os dados em formato JSON, aqui usamos os objetos
+    //Headers e RequestOptions para setar o content-type da nossa requisição
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //Fazemos um post na url, passando o contact em formato json, e os options
+    //criados no passo anterior. O resultado também vem em json.
+    return this.http.put(`${this.url}/${contact._id}`, JSON.stringify(contact), options)
+      .map(res => res.json());
+  }
   
 }

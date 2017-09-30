@@ -17,7 +17,7 @@ export class ContactComponent implements OnInit {
 
   @Input() contact : Contact;
   @Output() contactDeleted = new EventEmitter();
-  
+  @Output() contactEdit = new EventEmitter();
 
  /* 
   @Input() contact = {
@@ -29,6 +29,10 @@ export class ContactComponent implements OnInit {
 
   remove() {
     this.contactDeleted.emit();
+  }
+
+  edit() {
+    this.contactEdit.emit();
   }
 
 }

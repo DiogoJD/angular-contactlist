@@ -22,9 +22,10 @@ export class ContactsComponent implements OnInit {
    //Lista de contatos
    contacts:Contact[];
 
+   contact:Contact;
  
    showCreate = false;
-
+   showCreateEdit = false;
 
    //Two way binding dos campos de texto
    inputName = "";
@@ -39,15 +40,7 @@ export class ContactsComponent implements OnInit {
     //Antes de iniciar o procedimento, setamos a flag loading para true
     //Usaremos juntamente com o *ngIf no template, para mostrar uma mensagem de
     //carregamento
-    this.loading = true;
-    //Chamamos o método getContacts do serviço, chamando subscribe
-    this.contactsService.getContacts().subscribe(contacts => {
-        //Após o retorno do servidor, setamos os contatos recebidos na
-        //nossa lista, e marcamos o 'loading' como false pra esconder a
-        //mensagem de carregamento no template
-        this.contacts = contacts;
-        this.loading = false;
-      });
+    this.getContacts();
   }
 
 
@@ -57,14 +50,14 @@ export class ContactsComponent implements OnInit {
     //Chamamos o método deleteContact do serviço, dando subscribe
     this.contactsService.deleteContact(contact).subscribe(c => {
       //Após o retorno do servidor, removemos o contato da nossa lista 'contacts'
-      let index = this.contacts.indexOf(contact);
-      this.contacts.splice(index, 1);
+      this.getContacts();
     });
   }
 
   //INSERIR CONTATO
   insertContact() {
     this.showCreate = false;
+    //this.showCreateEdit = false;
     //Carregamos os dados de inputName e inputPhone para construir nosso objeto Contact
     let contact:Contact = {
       name: this.inputName,
@@ -75,14 +68,46 @@ export class ContactsComponent implements OnInit {
     this.contactsService.saveContact(contact).subscribe(c => {
       //Quando a resposta chegar, jogamos o objeto retornado na lista 'contacts'
       //para ser mostrado
-      this.contacts.push(c);
+      this.getContacts();
     });
 
   }
 
-  
+    //Editar CONTATO
+    edit(contact) {
+      this.showCreateEdit = true;
+      
+      this.contact = {...contact};
+      
+    }
+      //Edit CONTACT
+      editContact() {
+
+        this.contactsService.editContact(this.contact).subscribe(c => {
+          this.getContacts();
+          this.showCreateEdit = false;
+        });
+
+      }
+
+    getContacts(){
+      this.loading = true;
+      //Chamamos o método getContacts do serviço, chamando subscribe
+      this.contactsService.getContacts().subscribe(contacts => {
+          //Após o retorno do servidor, setamos os contatos recebidos na
+          //nossa lista, e marcamos o 'loading' como false pra esconder a
+          //mensagem de carregamento no template
+          this.contacts = contacts;
+          this.loading = false;
+        });
+    }
+
   showNewContactForm() {
     this.showCreate = !this.showCreate;
+  }
+
+  showNewContactEditForm() {
+    this.showCreateEdit = !this.showCreateEdit;
   }
 
 }
